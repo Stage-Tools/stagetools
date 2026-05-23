@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PC Locker · Stage Tools</title>
+<title>Rack Designer · Stage Tools</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -56,22 +56,30 @@
 <nav>
   <a class="nav-logo" href="index.html">Stage Tools</a>
   <span class="nav-sep">/</span>
-  <span class="nav-current">PC Locker</span>
+  <span class="nav-current">Rack Designer</span>
 </nav>
 <main>
   <div class="hero">
     <div>
       <div class="hero-icon">
-        <svg viewBox="0 0 56 56" fill="none"><rect x="7" y="22" width="42" height="30" rx="3" stroke="#EF9F27" stroke-width="2"/><path d="M19 22v-7a9 9 0 0 1 18 0v7" stroke="#EF9F27" stroke-width="2" stroke-linecap="round"/><circle cx="28" cy="37" r="3.5" fill="#EF9F27"/><line x1="28" y1="40.5" x2="28" y2="45" stroke="#EF9F27" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="7" y="3" width="42" height="50" rx="3" stroke="#EF9F27" stroke-width="2"/>
+          <rect x="10" y="6" width="36" height="12" rx="1.5" stroke="#EF9F27" stroke-width="1.5"/>
+          <rect x="10" y="22" width="36" height="12" rx="1.5" stroke="#EF9F27" stroke-width="1.5"/>
+          <rect x="10" y="38" width="36" height="12" rx="1.5" stroke="#EF9F27" stroke-width="1.5"/>
+          <rect x="10" y="22" width="4.5" height="12" rx="1" fill="#EF9F27"/>
+          <circle cx="40" cy="12" r="3" fill="#EF9F27" opacity="0.35"/>
+          <circle cx="40" cy="28" r="3" fill="#EF9F27"/>
+          <circle cx="40" cy="44" r="3" fill="#EF9F27" opacity="0.35"/>
+        </svg>
       </div>
-      <h1>PC Locker</h1>
-      <div class="hero-version">v0.10.8 · Windows 10/11</div>
-      <p>A fullscreen overlay that instantly locks all keyboard input on every connected monitor — without closing or interrupting running applications. Designed for live shows, recording sessions, and unattended workstations.</p>
+      <h1>Rack Designer</h1>
+      <div class="hero-version">v0.1.18 · Windows 10/11</div>
+      <p>A visual rack layout application for live events, touring productions, permanent installations, and broadcast environments. Build rack layouts, manage a device library, and export rider-ready PDF documentation.</p>
     </div>
     <div class="hero-actions">
-      <a class="btn-primary" href="https://github.com/Stage-Tools/pc-locker/releases/download/v0.10.8/PCLocker_v0.10.8_Setup.exe">Download setup</a>
-      <a class="btn-ghost" href="https://github.com/Stage-Tools/pc-locker/releases/download/v0.10.8/PCLocker_v0.10.8_portable.exe">Download portable</a>
-      <a class="btn-ghost" href="https://github.com/Stage-Tools/pc-locker/releases/download/v0.10.8/PCLocker_v0.10.8_UserManual_v2.pdf">Manual</a>
+      <a class="btn-primary" href="https://github.com/Stage-Tools/RackDesigner/releases/download/v0.1.18/RackDesigner_v0.1.18_Setup.exe">Download setup</a>
+      <a class="btn-ghost" href="https://github.com/Stage-Tools/RackDesigner/releases/download/v0.1.18/RackDesigner_v0.1.18_UserManual.docx.pdf">Manual</a>
     </div>
   </div>
 
@@ -82,28 +90,28 @@
     <div class="section-title">How it works</div>
     <div class="features-list">
       <div class="feature">
-        <div class="feature-title">Fullscreen overlay</div>
-        <div class="feature-desc">A semi-transparent overlay covers all connected monitors simultaneously. Underlying applications remain visible and keep running normally.</div>
+        <div class="feature-title">Visual rack layout</div>
+        <div class="feature-desc">Design multi-rack layouts by dragging equipment from a library into rack slots. Supports reordering by drag, tray placement for sub-width devices, and multi-bay racks.</div>
       </div>
       <div class="feature">
-        <div class="feature-title">Keyboard lock</div>
-        <div class="feature-desc">All keystrokes are blocked at the lowest Windows level — including Win key, Ctrl+Alt+Del, Ctrl+Shift+Esc, and Alt+Tab. The mouse remains free.</div>
+        <div class="feature-title">Device library</div>
+        <div class="feature-desc">Manage a persistent, project-independent library of equipment definitions. Includes 100+ preloaded professional devices across video, audio, lighting, network, and power categories.</div>
       </div>
       <div class="feature">
-        <div class="feature-title">Multi-monitor</div>
-        <div class="feature-desc">The overlay and unlock button appear on every connected display at the same time. No monitor is left unprotected.</div>
+        <div class="feature-title">Power &amp; weight totals</div>
+        <div class="feature-desc">Automatically calculates total power draw in watts and weight in kg per rack and across the entire project. Totals update in real time as devices are added or removed.</div>
       </div>
       <div class="feature">
-        <div class="feature-title">Unlock methods</div>
-        <div class="feature-desc">Unlock instantly with a configurable keyboard shortcut (default Ctrl+Alt+L), or via password dialog on any screen.</div>
+        <div class="feature-title">PDF export</div>
+        <div class="feature-desc">Generate rider-ready PDF documentation with rack diagrams, device lists, power and weight totals, and a project summary. Fully configurable per export.</div>
       </div>
       <div class="feature">
-        <div class="feature-title">Configurable opacity</div>
-        <div class="feature-desc">Adjust overlay darkness from barely visible (0.2) to nearly opaque (0.85). Default is 0.55 — desktop stays visible behind the lock.</div>
+        <div class="feature-title">Import &amp; export</div>
+        <div class="feature-desc">Import and export devices in JSON or CSV format. Share library entries with other users or maintain a master library outside the application.</div>
       </div>
       <div class="feature">
-        <div class="feature-title">Setup or portable</div>
-        <div class="feature-desc">Available as a standard installer or as a single portable .exe. No dependencies either way. Config is saved automatically on first launch.</div>
+        <div class="feature-title">Project files</div>
+        <div class="feature-desc">Projects are saved as self-contained .rackproj files. Share them with collaborators without requiring the same device library to be installed on their machine.</div>
       </div>
     </div>
   </div>
@@ -113,12 +121,12 @@
   <div class="section">
     <div class="touch-inner">
       <div>
-        <h2>Get in touch</h2>
-        <p>Found a bug or have a feature request? Open an issue or start a discussion on GitHub.</p>
+        <h2>Contribute to the library</h2>
+        <p>The preloaded library covers the most common equipment, but the community can expand it. Share your device entries with other users via JSON export — open an issue or start a discussion on GitHub.</p>
       </div>
       <div class="touch-actions">
-        <a class="btn-primary" href="https://github.com/Stage-Tools/pc-locker/issues/new">Open an issue</a>
-        <a class="btn-ghost" href="https://github.com/Stage-Tools/pc-locker/discussions">Discussions</a>
+        <a class="btn-primary" href="https://github.com/Stage-Tools/RackDesigner/issues/new">Open an issue</a>
+        <a class="btn-ghost" href="https://github.com/Stage-Tools/RackDesigner/discussions">Discussions</a>
       </div>
     </div>
   </div>
