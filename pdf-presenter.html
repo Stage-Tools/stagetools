@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rack Designer · Stage Tools</title>
+<title>PDF Presenter · Stage Tools</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -56,30 +56,34 @@
 <nav>
   <a class="nav-logo" href="index.html">Stage Tools</a>
   <span class="nav-sep">/</span>
-  <span class="nav-current">Rack Designer</span>
+  <span class="nav-current">PDF Presenter</span>
 </nav>
 <main>
   <div class="hero">
     <div>
       <div class="hero-icon">
-        <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="7" y="3" width="42" height="50" rx="3" stroke="#EF9F27" stroke-width="2"/>
-          <rect x="10" y="6" width="36" height="12" rx="1.5" stroke="#EF9F27" stroke-width="1.5"/>
-          <rect x="10" y="22" width="36" height="12" rx="1.5" stroke="#EF9F27" stroke-width="1.5"/>
-          <rect x="10" y="38" width="36" height="12" rx="1.5" stroke="#EF9F27" stroke-width="1.5"/>
-          <rect x="10" y="22" width="4.5" height="12" rx="1" fill="#EF9F27"/>
-          <circle cx="40" cy="12" r="3" fill="#EF9F27" opacity="0.35"/>
-          <circle cx="40" cy="28" r="3" fill="#EF9F27"/>
-          <circle cx="40" cy="44" r="3" fill="#EF9F27" opacity="0.35"/>
+        <svg viewBox="0 0 56 56" fill="none">
+          <rect x="0" y="0" width="56" height="46" rx="2" stroke="#EF9F27" stroke-width="2"/>
+          <line x1="0" y1="9" x2="56" y2="9" stroke="#EF9F27" stroke-width="1" opacity="0.35"/>
+          <line x1="34" y1="9" x2="34" y2="46" stroke="#EF9F27" stroke-width="2" stroke-linecap="round"/>
+          <rect x="3" y="12" width="27" height="20" rx="1" fill="#EF9F27" fill-opacity="0.13"/>
+          <line x1="3" y1="35" x2="30" y2="35" stroke="#EF9F27" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <line x1="3" y1="39" x2="30" y2="39" stroke="#EF9F27" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <line x1="3" y1="43" x2="22" y2="43" stroke="#EF9F27" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <rect x="37" y="12" width="16" height="11" rx="1" stroke="#EF9F27" stroke-width="1.5" fill="none" opacity="0.7"/>
+          <line x1="34" y1="26" x2="56" y2="26" stroke="#EF9F27" stroke-width="1" opacity="0.35"/>
+          <line x1="37" y1="30" x2="53" y2="30" stroke="#EF9F27" stroke-width="1" stroke-linecap="round" opacity="0.35"/>
+          <line x1="37" y1="34" x2="53" y2="34" stroke="#EF9F27" stroke-width="1" stroke-linecap="round" opacity="0.35"/>
+          <line x1="37" y1="38" x2="49" y2="38" stroke="#EF9F27" stroke-width="1" stroke-linecap="round" opacity="0.35"/>
         </svg>
       </div>
-      <h1>Rack Designer</h1>
-      <div class="hero-version">v0.1.19 · Windows 10/11</div>
-      <p>A visual rack layout application for live events, touring productions, permanent installations, and broadcast environments. Build rack layouts, manage a device library, and export rider-ready PDF documentation.</p>
+      <h1>PDF Presenter</h1>
+      <div class="hero-version">v1.0 · Web app</div>
+      <p>A browser-based presenter tool for PDF slideshows. Dual-window mode with real-time sync, per-slide notes, resizable layout, and black screen control — delivered as a single HTML file, no installation required.</p>
     </div>
     <div class="hero-actions">
-      <a class="btn-primary" href="https://github.com/Stage-Tools/RackDesigner/releases/download/v0.1.19/RackDesigner_v0.1.19_Setup.exe">Download setup</a>
-      <a class="btn-ghost" href="https://github.com/Stage-Tools/RackDesigner/releases/download/v0.1.19/RackDesigner_v0.1.19_UserManual.pdf">Manual</a>
+      <a class="btn-primary" href="https://github.com/Stage-Tools/PDF-Presenter/releases/download/v1.0/pdf-presenter_v1.0.html">Download .html</a>
+      <a class="btn-ghost" href="https://github.com/Stage-Tools/PDF-Presenter/releases/download/v1.0/PDFPresenter_v1.0_UserManual.pdf">Manual</a>
     </div>
   </div>
 
@@ -90,28 +94,28 @@
     <div class="section-title">How it works</div>
     <div class="features-list">
       <div class="feature">
-        <div class="feature-title">Visual rack layout</div>
-        <div class="feature-desc">Design multi-rack layouts by dragging equipment from a library into rack slots. Supports reordering by drag, tray placement for sub-width devices, and multi-bay racks.</div>
+        <div class="feature-title">Dual-window mode</div>
+        <div class="feature-desc">The presenter window runs on your laptop; the output window goes to the external display, media server, or video mixer input. Both stay in sync with zero perceptible lag.</div>
       </div>
       <div class="feature">
-        <div class="feature-title">Device library</div>
-        <div class="feature-desc">Manage a persistent, project-independent library of equipment definitions. Includes 100+ preloaded professional devices across video, audio, lighting, network, and power categories.</div>
+        <div class="feature-title">Presenter layout</div>
+        <div class="feature-desc">Current slide on the left, next-slide preview and notes on the right. Drag the vertical divider to balance the two areas; drag the horizontal divider to balance preview and notes.</div>
       </div>
       <div class="feature">
-        <div class="feature-title">Power &amp; weight totals</div>
-        <div class="feature-desc">Automatically calculates total power draw in watts and weight in kg per rack and across the entire project. Totals update in real time as devices are added or removed.</div>
+        <div class="feature-title">Per-slide notes</div>
+        <div class="feature-desc">Type notes for each slide directly in the interface. In folder mode, notes are saved automatically to a plain-text file alongside the PDF — no manual action required.</div>
       </div>
       <div class="feature">
-        <div class="feature-title">PDF export</div>
-        <div class="feature-desc">Generate rider-ready PDF documentation with rack diagrams, device lists, power and weight totals, and a project summary. Fully configurable per export.</div>
+        <div class="feature-title">Folder mode</div>
+        <div class="feature-desc">Open an entire event folder to get automatic note saving and layout persistence per PDF file. Switch between PDFs from the file list without losing any data.</div>
       </div>
       <div class="feature">
-        <div class="feature-title">Import &amp; export</div>
-        <div class="feature-desc">Import and export devices in JSON or CSV format. Share library entries with other users or maintain a master library outside the application.</div>
+        <div class="feature-title">Black screen</div>
+        <div class="feature-desc">Press B or click the button to instantly replace the output with a solid black frame. The presenter view stays active so you can prepare the next action discreetly.</div>
       </div>
       <div class="feature">
-        <div class="feature-title">Project files</div>
-        <div class="feature-desc">Projects are saved as self-contained .rackproj files. Share them with collaborators without requiring the same device library to be installed on their machine.</div>
+        <div class="feature-title">No installation</div>
+        <div class="feature-desc">A single HTML file — open it in Chrome or Edge and it's ready to use. No server, no internet connection required after the first load. PDF.js is cached by the browser on first use.</div>
       </div>
     </div>
   </div>
@@ -121,12 +125,12 @@
   <div class="section">
     <div class="touch-inner">
       <div>
-        <h2>Contribute to the library</h2>
-        <p>The preloaded library covers the most common equipment, but the community can expand it. Share your device entries with other users via JSON export — open an issue or start a discussion on GitHub.</p>
+        <h2>Get in touch</h2>
+        <p>Found a bug or have a feature request? Open an issue or start a discussion on GitHub.</p>
       </div>
       <div class="touch-actions">
-        <a class="btn-primary" href="https://github.com/Stage-Tools/RackDesigner/issues/new">Open an issue</a>
-        <a class="btn-ghost" href="https://github.com/Stage-Tools/RackDesigner/discussions">Discussions</a>
+        <a class="btn-primary" href="https://github.com/Stage-Tools/PDF-Presenter/issues/new">Open an issue</a>
+        <a class="btn-ghost" href="https://github.com/Stage-Tools/PDF-Presenter/discussions">Discussions</a>
       </div>
     </div>
   </div>
