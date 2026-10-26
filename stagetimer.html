@@ -4,132 +4,249 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stage Timer · Stage Tools</title>
+<meta name="description" content="Timer, countdown and clock for speakers and shows. Output to a monitor, NDI or a web page.">
+<meta name="theme-color" content="#0f0e0d">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    --amber: #EF9F27; --amber-dark: #412402; --surface: #0f0e0d; --surface-2: #181714; --surface-3: #221f1b;
-    --border: rgba(239,159,39,0.13); --border-bright: rgba(239,159,39,0.32);
-    --text: #f0ece4; --text-dim: #9a9590; --text-muted: #5a5650;
+    --amber: #E8A020; --amber-hover: #f3b84a; --on-amber: #1a1206;
+    --ground: #0f0e0d; --surface: #181714; --surface-hover: #1d1b18;
+    --line: rgba(232,160,32,0.14); --line-strong: rgba(232,160,32,0.35);
+    --text: #f0ece4; --text-2: #b5afa6; --text-3: #8f8980; --text-btn: #d6d0c7;
+    --wrap: 1200px; --pad: 2rem;
   }
-  body { background: var(--surface); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
-  nav { position: sticky; top: 0; z-index: 100; background: rgba(15,14,13,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); padding: 0 2.5rem; display: flex; align-items: center; gap: 0.75rem; height: 56px; }
-  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.1em; color: var(--amber); text-decoration: none; }
-  .nav-sep { color: var(--text-muted); font-family: 'DM Mono', monospace; font-size: 14px; }
-  .nav-current { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: var(--text-dim); }
-  main { flex: 1; }
-  .hero { padding: 5rem 2.5rem 4rem; max-width: 980px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: end; }
-  @media (max-width: 640px) { .hero { grid-template-columns: 1fr; } }
-  .hero-icon { width: 56px; height: 56px; margin-bottom: 1.5rem; }
-  .hero-icon svg { width: 56px; height: 56px; }
-  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(50px, 8vw, 80px); line-height: 0.93; letter-spacing: 0.02em; margin-bottom: 1rem; }
-  .hero-version { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-muted); letter-spacing: 0.08em; margin-bottom: 1.25rem; }
-  .hero p { font-size: 16px; color: var(--text-dim); max-width: 520px; line-height: 1.75; font-weight: 300; }
-  .hero-actions { display: flex; flex-direction: column; gap: 0.75rem; min-width: 160px; }
-  .btn-primary { background: var(--amber); color: var(--amber-dark); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; font-weight: 500; padding: 12px 24px; border: none; border-radius: 2px; text-decoration: none; text-transform: uppercase; transition: background 0.2s; display: inline-block; text-align: center; white-space: nowrap; }
-  .btn-primary:hover { background: #f5b03a; }
-  .btn-ghost { color: var(--text-dim); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; padding: 12px 24px; border: 1px solid var(--border-bright); border-radius: 2px; text-decoration: none; text-transform: uppercase; transition: all 0.2s; display: inline-block; text-align: center; white-space: nowrap; }
-  .btn-ghost:hover { color: var(--amber); border-color: var(--amber); }
-  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border-bright), transparent); margin: 0 2.5rem; }
-  .section { padding: 4rem 2.5rem; max-width: 980px; margin: 0 auto; }
-  .section-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: var(--amber); text-transform: uppercase; margin-bottom: 0.75rem; }
-  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.04em; margin-bottom: 2.5rem; }
-  .features-list { display: flex; flex-direction: column; }
-  .feature { padding: 1.5rem 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 220px 1fr; gap: 2rem; align-items: baseline; }
-  .feature:first-child { border-top: 1px solid var(--border); }
-  @media (max-width: 640px) { .feature { grid-template-columns: 1fr; gap: 0.4rem; } }
-  .feature-title { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber); }
-  .feature-desc { font-size: 14px; color: var(--text-dim); line-height: 1.75; font-weight: 300; }
-  .touch-inner { border: 1px solid var(--border); border-radius: 4px; background: var(--surface-2); padding: 3rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
-  @media (max-width: 640px) { .touch-inner { grid-template-columns: 1fr; } }
-  .touch-inner h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
-  .touch-inner p { font-size: 14px; color: var(--text-dim); font-weight: 300; line-height: 1.75; }
-  .touch-actions { display: flex; flex-direction: column; gap: 0.75rem; min-width: 160px; }
-  footer { border-top: 1px solid var(--border); padding: 2rem 2.5rem; display: flex; justify-content: center; }
-  footer p { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-muted); letter-spacing: 0.05em; }
-  footer a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
-  footer a:hover { color: var(--text-dim); }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body { background: var(--ground); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: var(--amber); }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+  .mono { font-family: 'DM Mono', monospace; }
+  nav.top { position: sticky; top: 0; z-index: 50; background: rgba(15,14,13,0.9); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  nav.top .wrap { height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.1em; color: var(--amber); text-decoration: none; white-space: nowrap; }
+  .nav-links { display: flex; align-items: center; gap: 1.75rem; }
+  .nav-links a { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #a8a29a; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; transition: color .2s; }
+  .nav-links a:hover { color: var(--amber); }
+  .crumb { display: flex; align-items: center; gap: 12px; min-width: 0; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: var(--text-3); }
+  .crumb .here { color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .label { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: var(--amber); text-transform: uppercase; margin-bottom: 0.5rem; }
+  h2.title { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 52px; letter-spacing: 0.03em; line-height: 1; }
+  .btn { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; padding: 14px 24px; border-radius: 3px; min-height: 46px; display: inline-flex; align-items: center; justify-content: center; transition: background .2s, border-color .2s, color .2s; }
+  .btn-solid { background: var(--amber); color: var(--on-amber); font-weight: 500; }
+  .btn-solid:hover { background: var(--amber-hover); }
+  .btn-line { border: 1px solid var(--line-strong); color: var(--text-btn); }
+  .btn-line:hover { border-color: var(--amber); color: var(--amber); }
+  footer.bottom { border-top: 1px solid var(--line); }
+  footer.bottom .wrap { padding-top: 2rem; padding-bottom: 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: var(--text-3); }
+  footer.bottom .links { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+  footer.bottom a { color: var(--text-3); text-decoration: none; transition: color .2s; }
+  footer.bottom a:hover { color: var(--amber); }
+  footer.bottom a.logo { font-size: 20px; color: var(--amber); }
+  :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+  @media (max-width: 700px) {
+    :root { --pad: 16px; }
+    h2.title { font-size: 40px; }
+    .nav-links { gap: 0.25rem; }
+    .nav-links a { padding: 0 8px; }
+    .hide-sm { display: none; }
+    .nav-links a { white-space: nowrap; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+  header.hero { padding-top: 5rem; padding-bottom: 4.5rem; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 3.5rem; align-items: start; }
+  .hero-head { display: flex; align-items: center; gap: 18px; margin-bottom: 1.75rem; }
+  .hero-icon svg { width: 72px; height: 72px; display: block; }
+  .badge { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); border: 1px solid rgba(232,160,32,0.3); padding: 4px 10px; border-radius: 2px; }
+  .badge.muted { color: #a8a29a; border-color: rgba(240,236,228,0.2); }
+  h1 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(60px, 8vw, 112px); line-height: 0.9; margin-bottom: 1rem; }
+  .hero-version { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: var(--text-3); margin-bottom: 1.5rem; }
+  .intro { font-size: 19px; font-weight: 300; color: var(--text-2); max-width: 560px; line-height: 1.7; }
+  .panel { background: var(--surface); border: 1px solid rgba(232,160,32,0.22); border-radius: 6px; padding: 26px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 30px 80px rgba(0,0,0,0.45); }
+  .panel-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+  .panel-head b { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 28px; letter-spacing: 0.05em; }
+  .panel-head span { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-3); }
+  .panel a.btn-primary, .panel a.btn-ghost { position: relative; display: block; text-decoration: none; border-radius: 3px; padding: 14px 44px 14px 18px; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; transition: background .2s, border-color .2s, color .2s; }
+  .panel a.btn-primary { background: var(--amber); color: var(--on-amber); font-weight: 500; font-size: 13px; padding-top: 16px; padding-bottom: 16px; }
+  .panel a.btn-primary:hover { background: var(--amber-hover); }
+  .panel a.btn-ghost { border: 1px solid var(--line-strong); color: var(--text-btn); }
+  .panel a.btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+  .panel a::before { content: "↓"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); font-size: 16px; }
+  .panel a[href^="https://stage-tools.github.io"]::before { content: "↗"; }
+  .panel a::after { display: block; font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0; text-transform: none; font-weight: 400; margin-top: 2px; color: var(--text-3); }
+  .panel a.btn-primary::after { color: rgba(26,18,6,0.72); }
+  .panel a[href*="_Setup."]::after { content: "Recommended · installer with Start menu entry"; }
+  .panel a[href*="_Portable.exe"]::after { content: "Single .exe, no installation"; }
+  .panel a[href*="_Portable.zip"]::after { content: "Zip archive, no installation"; }
+  .panel a[href$=".tgz"]::after { content: ".tgz · import in Bitfocus Companion"; }
+  .panel a[href*="Manual"]::after { content: "PDF · user manual"; }
+  .panel a[href^="https://stage-tools.github.io"]::after { content: "Runs in any browser · no install"; }
+  .panel .note { font-size: 12px; color: var(--text-3); line-height: 1.55; margin-top: 6px; }
+  section.block { border-top: 1px solid var(--line); }
+  section.block > .wrap { padding-top: 5rem; padding-bottom: 4rem; }
+  .features { margin-top: 2.5rem; border-bottom: 1px solid var(--line); }
+  .feature { border-top: 1px solid var(--line); padding: 26px 0; display: grid; grid-template-columns: 64px minmax(0, 280px) minmax(0, 1fr); gap: 16px; align-items: baseline; }
+  .feature .q { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--amber); }
+  .feature h3 { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .feature p { font-size: 15px; font-weight: 300; color: var(--text-2); line-height: 1.7; }
+  .more-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.75rem; }
+  .more-head h2 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 40px; line-height: 1; }
+  .more-head a { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #a8a29a; text-decoration: none; }
+  .more-head a:hover { color: var(--amber); }
+  .more { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; }
+  .more a { background: var(--surface); border: 1px solid rgba(232,160,32,0.16); border-radius: 6px; padding: 18px 20px; text-decoration: none; color: var(--text); display: flex; flex-direction: column; gap: 4px; min-height: 92px; transition: border-color .2s, background .2s, transform .2s; }
+  .more a:hover { border-color: rgba(232,160,32,0.55); background: var(--surface-hover); transform: translateY(-2px); }
+  .more b { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 24px; letter-spacing: 0.04em; line-height: 1; }
+  .more span { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-3); }
+  .touch { padding-top: 3.5rem !important; padding-bottom: 3.5rem !important; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; }
+  .touch h2 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 36px; line-height: 1; }
+  .touch p { font-size: 15px; font-weight: 300; color: var(--text-2); margin-top: 8px; }
+  .touch .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .sticky-dl { display: none; }
+  @media (max-width: 900px) {
+    header.hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 2.5rem; padding-bottom: 2.5rem; }
+    .feature { grid-template-columns: 44px minmax(0, 1fr); gap: 6px 10px; padding: 18px 0; }
+    .feature p { grid-column: 2; }
+  }
+  @media (max-width: 700px) {
+    .hero-icon svg { width: 52px; height: 52px; }
+    .intro { font-size: 16px; }
+    .panel { padding: 16px; box-shadow: none; }
+    section.block > .wrap { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+    .more { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 160px; overflow-x: auto; margin-right: calc(-1 * var(--pad)); padding-right: var(--pad); }
+    .touch .actions { width: 100%; display: grid; grid-template-columns: 1fr 1fr; }
+    body.has-sticky { padding-bottom: 68px; }
+    .sticky-dl { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; background: rgba(20,19,17,0.97); border-top: 1px solid rgba(232,160,32,0.25); padding: 10px 16px; padding-bottom: calc(10px + env(safe-area-inset-bottom)); align-items: center; justify-content: space-between; gap: 12px; transform: translateY(110%); visibility: hidden; transition: transform .25s, visibility .25s; }
+    .sticky-dl.show { transform: none; visibility: visible; }
+    .sticky-dl b { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 20px; line-height: 1; display: block; }
+    .sticky-dl span { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-3); }
+  }
 </style>
 </head>
-<body>
-<nav>
-  <a class="nav-logo" href="index.html">Stage Tools</a>
-  <span class="nav-sep">/</span>
-  <span class="nav-current">Stage Timer</span>
+<body class="has-sticky">
+<nav class="top">
+  <div class="wrap">
+    <div class="crumb">
+      <a class="logo" href="index.html">Stage Tools</a>
+      <span class="hide-sm">/</span><span class="hide-sm">Desktop</span><span>/</span><span class="here">Stage Timer</span>
+    </div>
+    <div class="nav-links"><a href="index.html">← All tools</a></div>
+  </div>
 </nav>
 <main>
-  <div class="hero">
+  <header class="hero wrap">
     <div>
-      <div class="hero-icon">
-        <svg viewBox="0 0 56 56" fill="none"><g transform="scale(1.47368)" stroke="#EF9F27" stroke-width="1.357" stroke-linecap="round" stroke-linejoin="round"><line x1="11" y1="5" x2="27" y2="5"/><line x1="11" y1="33" x2="27" y2="33"/><path d="M12.5 5C12.5 13 17.5 15.5 19 19C17.5 22.5 12.5 25 12.5 33"/><path d="M25.5 5C25.5 13 20.5 15.5 19 19C20.5 22.5 25.5 25 25.5 33"/><path d="M15.5 30.5H22.5L21 27.5H17Z" fill="#EF9F27" stroke="none"/><circle cx="19" cy="17.4" r="0.7" fill="#EF9F27" stroke="none"/></g></svg>
+      <div class="hero-head">
+        <div class="hero-icon"><svg viewBox="0 0 56 56" fill="none"><g transform="scale(1.47368)" stroke="#E8A020" stroke-width="1.357" stroke-linecap="round" stroke-linejoin="round"><line x1="11" y1="5" x2="27" y2="5"/><line x1="11" y1="33" x2="27" y2="33"/><path d="M12.5 5C12.5 13 17.5 15.5 19 19C17.5 22.5 12.5 25 12.5 33"/><path d="M25.5 5C25.5 13 20.5 15.5 19 19C20.5 22.5 25.5 25 25.5 33"/><path d="M15.5 30.5H22.5L21 27.5H17Z" fill="#E8A020" stroke="none"/><circle cx="19" cy="17.4" r="0.7" fill="#E8A020" stroke="none"/></g></svg></div>
+        <span class="badge">New · Desktop tool</span>
       </div>
       <h1>Stage Timer</h1>
       <div class="hero-version">v0.9.2 · Windows 10/11</div>
-      <p>A timer, countdown and clock for speakers, presentations and live shows. Drive it from the control window, a browser or Bitfocus Companion, and send the output to a monitor, as NDI or as a web page.</p>
+      <p class="intro">A timer, countdown and clock for speakers, presentations and live shows. Drive it from the control window, a browser or Bitfocus Companion, and send the output to a monitor, as NDI or as a web page.</p>
     </div>
-    <div class="hero-actions">
+    <aside class="panel" id="download" aria-label="Downloads">
+      <div class="panel-head"><b>Download</b><span>v0.9.2</span></div>
       <a class="btn-primary" href="https://github.com/Stage-Tools/StageTimer/releases/download/v0.9.2/StageTimer_v0.9.2_Setup.exe">Download setup</a>
       <a class="btn-ghost" href="https://github.com/Stage-Tools/StageTimer/releases/download/v0.9.2/StageTimer_v0.9.2_Portable.exe">Download portable</a>
       <a class="btn-ghost" href="https://github.com/Stage-Tools/StageTimer/releases/download/v0.9.2/stagetools-stagetimer-0.1.0.tgz">Companion module</a>
       <a class="btn-ghost" href="https://github.com/Stage-Tools/StageTimer/releases/download/v0.9.2/StageTimer_v0.9.2_Manual.pdf">Manual</a>
+      <p class="note">Not code-signed: Windows SmartScreen may ask to confirm on first launch — choose More info, then Run anyway.</p>
+    </aside>
+  </header>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="label">Overview</div>
+      <h2 class="title">How it works</h2>
+      <div class="features">
+      <div class="feature">
+        <span class="q">Q1</span>
+        <h3>Three timer modes</h3>
+        <p>Countdown, count up, or count to a time of day. Play, pause and reset, and add or remove time while it runs — from a quick +1m to any amount.</p>
+      </div>
+      <div class="feature">
+        <span class="q">Q2</span>
+        <h3>Colours and thresholds</h3>
+        <p>A base colour plus two thresholds, each with optional flashing, and a dedicated end / overtime style. At zero the timer can stop or keep counting into overtime.</p>
+      </div>
+      <div class="feature">
+        <span class="q">Q3</span>
+        <h3>Flexible output</h3>
+        <p>Timer, clock, blackout or test patterns. Free layout with snap, solid or transparent background, windowed or fullscreen on the monitor you choose, plus free-text messages.</p>
+      </div>
+      <div class="feature">
+        <span class="q">Q4</span>
+        <h3>NDI and web output</h3>
+        <p>The same picture as an NDI source (with optional alpha) and as a web page, ready to use as a browser source. NDI needs the free NDI Tools on the PC.</p>
+      </div>
+      <div class="feature">
+        <span class="q">Q5</span>
+        <h3>Presets and rundown</h3>
+        <p>Twelve preset buttons, a rundown with planned start times and cumulative delay, and showfile export / import for a complete backup of the show.</p>
+      </div>
+      <div class="feature">
+        <span class="q">Q6</span>
+        <h3>Remote control and Companion</h3>
+        <p>Full web control page, HTTP / WebSocket API and a dedicated Bitfocus Companion module with actions, feedbacks, variables and ready-made buttons.</p>
+      </div>
+      <div class="feature">
+        <span class="q">Q7</span>
+        <h3>Built for the show</h3>
+        <p>Time is computed from the system's monotonic clock. Web server, NDI and output are isolated from the timer: a failure in one of them never stops the count.</p>
+      </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="divider"></div>
-
-  <div class="section">
-    <div class="section-label">Overview</div>
-    <div class="section-title">How it works</div>
-    <div class="features-list">
-      <div class="feature">
-        <div class="feature-title">Three timer modes</div>
-        <div class="feature-desc">Countdown, count up, or count to a time of day. Play, pause and reset, and add or remove time while it runs — from a quick +1m to any amount.</div>
-      </div>
-      <div class="feature">
-        <div class="feature-title">Colours and thresholds</div>
-        <div class="feature-desc">A base colour plus two thresholds, each with optional flashing, and a dedicated end / overtime style. At zero the timer can stop or keep counting into overtime.</div>
-      </div>
-      <div class="feature">
-        <div class="feature-title">Flexible output</div>
-        <div class="feature-desc">Timer, clock, blackout or test patterns. Free layout with snap, solid or transparent background, windowed or fullscreen on the monitor you choose, plus free-text messages.</div>
-      </div>
-      <div class="feature">
-        <div class="feature-title">NDI and web output</div>
-        <div class="feature-desc">The same picture as an NDI source (with optional alpha) and as a web page, ready to use as a browser source. NDI needs the free NDI Tools on the PC.</div>
-      </div>
-      <div class="feature">
-        <div class="feature-title">Presets and rundown</div>
-        <div class="feature-desc">Twelve preset buttons, a rundown with planned start times and cumulative delay, and showfile export / import for a complete backup of the show.</div>
-      </div>
-      <div class="feature">
-        <div class="feature-title">Remote control and Companion</div>
-        <div class="feature-desc">Full web control page, HTTP / WebSocket API and a dedicated Bitfocus Companion module with actions, feedbacks, variables and ready-made buttons.</div>
-      </div>
-      <div class="feature">
-        <div class="feature-title">Built for the show</div>
-        <div class="feature-desc">Time is computed from the system's monotonic clock. Web server, NDI and output are isolated from the timer: a failure in one of them never stops the count.</div>
+  <section class="block">
+    <div class="wrap">
+      <div class="more-head"><h2>More from the toolkit</h2><a href="index.html">All tools →</a></div>
+      <div class="more">
+      <a href="pc-locker.html"><b>PC Locker</b><span>v0.11.1 · Windows</span></a>
+      <a href="smpteye.html"><b>SMPTEye</b><span>v0.19.0 · Windows</span></a>
+      <a href="wocountdown.html"><b>WO Countdown</b><span>v0.2.0 · Windows</span></a>
+      <a href="rackdesigner.html"><b>Rack Designer</b><span>v0.1.20 · Windows</span></a>
+      <a href="pdf-presenter.html"><b>PDF Presenter</b><span>v2.3.2 · Windows</span></a>
+      <a href="tc-calc.html"><b>TC Calc</b><span>v1.0.0 · Browser</span></a>
+      <a href="framecalc.html"><b>Frame Calc</b><span>v0.1.0 · Browser</span></a>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="divider"></div>
-
-  <div class="section">
-    <div class="touch-inner">
+  <section class="block">
+    <div class="wrap touch">
       <div>
         <h2>Get in touch</h2>
         <p>Found a bug or have a feature request? Open an issue or start a discussion on GitHub.</p>
       </div>
-      <div class="touch-actions">
-        <a class="btn-primary" href="https://github.com/Stage-Tools/StageTimer/issues/new">Open an issue</a>
-        <a class="btn-ghost" href="https://github.com/Stage-Tools/StageTimer/discussions">Discussions</a>
+      <div class="actions">
+        <a class="btn btn-line" href="https://github.com/Stage-Tools/StageTimer/issues/new" target="_blank" rel="noopener">Open an issue</a>
+        <a class="btn btn-line" href="https://github.com/Stage-Tools/StageTimer/discussions" target="_blank" rel="noopener">Discussions</a>
       </div>
     </div>
-  </div>
+  </section>
 </main>
-<footer>
-  <p>Made by <a href="https://github.com/NessiRiccardo" target="_blank">Riccardo Nessi</a></p>
+<footer class="bottom">
+  <div class="wrap">
+    <a class="logo" href="index.html">Stage Tools</a>
+    <div class="links">
+      <a href="https://github.com/Stage-Tools" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.instagram.com/stagetools.tools" target="_blank" rel="noopener">Instagram</a>
+      <span>Made by <a href="https://github.com/NessiRiccardo" target="_blank" rel="noopener">Riccardo Nessi</a></span>
+    </div>
+  </div>
 </footer>
+<div class="sticky-dl" id="sticky" aria-hidden="true">
+  <div><b>Stage Timer</b><span>v0.9.2 · Windows</span></div>
+  <a class="btn btn-solid" href="https://github.com/Stage-Tools/StageTimer/releases/download/v0.9.2/StageTimer_v0.9.2_Setup.exe" tabindex="-1">Setup ↓</a>
+</div>
+<script>
+(function () {
+  var panel = document.getElementById('download'), bar = document.getElementById('sticky');
+  if (!('IntersectionObserver' in window) || !panel || !bar) return;
+  new IntersectionObserver(function (e) { bar.classList.toggle('show', !e[0].isIntersecting && e[0].boundingClientRect.top < 0); }).observe(panel);
+})();
+</script>
 </body>
 </html>
