@@ -103,6 +103,21 @@
   .touch h2 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 36px; line-height: 1; }
   .touch p { font-size: 15px; font-weight: 300; color: var(--text-2); margin-top: 8px; }
   .touch .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .mac { border: 1px solid var(--line-strong); border-radius: 3px; transition: border-color .2s; }
+  .mac[open], .mac:hover { border-color: var(--amber); }
+  .mac summary { list-style: none; cursor: pointer; position: relative; padding: 14px 44px 14px 18px; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-btn); }
+  .mac summary::-webkit-details-marker { display: none; }
+  .mac summary::before { content: "▾"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); font-size: 14px; transition: transform .2s; }
+  .mac[open] summary::before { transform: translateY(-50%) rotate(180deg); }
+  .mac summary:hover, .mac[open] summary { color: var(--amber); }
+  .mac summary small { display: block; font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0; text-transform: none; color: var(--text-3); margin-top: 2px; }
+  .mac .beta { display: inline-block; margin-left: 8px; font-size: 10px; letter-spacing: 0.14em; color: var(--amber); border: 1px solid rgba(232,160,32,0.4); padding: 1px 6px; border-radius: 2px; vertical-align: 1px; }
+  .mac .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 0 12px 12px; }
+  .mac .choices a { display: flex; flex-direction: column; gap: 2px; text-decoration: none; border: 1px solid var(--line); border-radius: 3px; padding: 12px 14px; color: var(--text); min-height: 44px; transition: border-color .2s, background .2s; }
+  .mac .choices a:hover { border-color: var(--amber); background: rgba(232,160,32,0.06); }
+  .mac .choices b { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .mac .choices span { font-size: 12px; color: var(--text-3); }
+  .mac .hint { padding: 0 18px 14px; font-size: 12px; color: var(--text-3); line-height: 1.5; }
   .sticky-dl { display: none; }
   @media (max-width: 900px) {
     header.hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 2.5rem; padding-bottom: 2.5rem; }
@@ -142,15 +157,23 @@
         <span class="badge">New · Desktop tool</span>
       </div>
       <h1>Stage Timer</h1>
-      <div class="hero-version">v0.9.2 · Windows 10/11</div>
+      <div class="hero-version">v0.9.4 · Windows 10/11 · macOS (beta)</div>
       <p class="intro">A timer, countdown and clock for speakers, presentations and live shows. Drive it from the control window, a browser or Bitfocus Companion, and send the output to a monitor, as NDI or as a web page.</p>
     </div>
     <aside class="panel" id="download" aria-label="Downloads">
-      <div class="panel-head"><b>Download</b><span>v0.9.2</span></div>
-      <a class="btn-primary" href="https://github.com/Stage-Tools/StageTimer/releases/download/v0.9.2/StageTimer_v0.9.2_Setup.exe">Download setup</a>
-      <a class="btn-ghost" href="https://github.com/Stage-Tools/StageTimer/releases/download/v0.9.2/StageTimer_v0.9.2_Portable.exe">Download portable</a>
-      <a class="btn-ghost" href="https://github.com/Stage-Tools/StageTimer/releases/download/v0.9.2/stagetools-stagetimer-0.1.0.tgz">Companion module</a>
-      <a class="btn-ghost" href="https://github.com/Stage-Tools/StageTimer/releases/download/v0.9.2/StageTimer_v0.9.2_Manual.pdf">Manual</a>
+      <div class="panel-head"><b>Download</b><span>v0.9.4</span></div>
+      <a class="btn-primary" href="https://github.com/Stage-Tools/StageTimer/releases/download/v0.9.4/StageTimer_v0.9.4_Setup.exe">Download setup</a>
+      <a class="btn-ghost" href="https://github.com/Stage-Tools/StageTimer/releases/download/v0.9.4/StageTimer_v0.9.4_Portable.exe">Download portable</a>
+      <details class="mac">
+        <summary>Download for macOS<span class="beta">Beta</span><small>Choose Apple Silicon or Intel</small></summary>
+        <div class="choices">
+          <a href="https://github.com/Stage-Tools/StageTimer/releases/download/v0.9.4/StageTimer_v0.9.4_macOS-AppleSilicon.dmg"><b>Apple Silicon</b><span>M1 and later</span></a>
+          <a href="https://github.com/Stage-Tools/StageTimer/releases/download/v0.9.4/StageTimer_v0.9.4_macOS-Intel.dmg"><b>Intel</b><span>Older Intel Macs</span></a>
+        </div>
+        <p class="hint">Not sure? Apple menu › About This Mac: "Chip" means Apple Silicon, "Processor" means Intel.</p>
+      </details>
+      <a class="btn-ghost" href="https://github.com/Stage-Tools/StageTimer/releases/download/v0.9.4/stagetools-stagetimer-0.1.0.tgz">Companion module</a>
+      <a class="btn-ghost" href="https://github.com/Stage-Tools/StageTimer/releases/download/v0.9.4/StageTimer_v0.9.4_Manual.pdf">Manual</a>
       <p class="note">Not code-signed: Windows SmartScreen may ask to confirm on first launch — choose More info, then Run anyway.</p>
     </aside>
   </header>
@@ -238,8 +261,8 @@
   </div>
 </footer>
 <div class="sticky-dl" id="sticky" aria-hidden="true">
-  <div><b>Stage Timer</b><span>v0.9.2 · Windows</span></div>
-  <a class="btn btn-solid" href="https://github.com/Stage-Tools/StageTimer/releases/download/v0.9.2/StageTimer_v0.9.2_Setup.exe" tabindex="-1">Setup ↓</a>
+  <div><b>Stage Timer</b><span>v0.9.4 · Windows · macOS beta</span></div>
+  <a class="btn btn-solid" href="https://github.com/Stage-Tools/StageTimer/releases/download/v0.9.4/StageTimer_v0.9.4_Setup.exe" tabindex="-1">Setup ↓</a>
 </div>
 <script>
 (function () {
