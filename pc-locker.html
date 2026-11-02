@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PC Locker · Stage Tools</title>
-<meta name="description" content="Locks all keyboard input on every monitor — without closing or interrupting running applications.">
+<meta name="description" content="Locks keyboard and mouse — without closing or interrupting running applications.">
 <meta name="theme-color" content="#0f0e0d">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,7 +86,7 @@
   section.block { border-top: 1px solid var(--line); }
   section.block > .wrap { padding-top: 5rem; padding-bottom: 4rem; }
   .features { margin-top: 2.5rem; border-bottom: 1px solid var(--line); }
-  .feature { border-top: 1px solid var(--line); padding: 26px 0; display: grid; grid-template-columns: 64px minmax(0, 280px) minmax(0, 1fr); gap: 16px; align-items: baseline; }
+  .feature { border-top: 1px solid var(--line); padding: 26px 0; display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 24px; align-items: baseline; }
   .feature .q { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--amber); }
   .feature h3 { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; }
   .feature p { font-size: 15px; font-weight: 300; color: var(--text-2); line-height: 1.7; }
@@ -106,8 +106,7 @@
   .sticky-dl { display: none; }
   @media (max-width: 900px) {
     header.hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 2.5rem; padding-bottom: 2.5rem; }
-    .feature { grid-template-columns: 44px minmax(0, 1fr); gap: 6px 10px; padding: 18px 0; }
-    .feature p { grid-column: 2; }
+    .feature { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 18px 0; }
   }
   @media (max-width: 700px) {
     .hero-icon svg { width: 52px; height: 52px; }
@@ -142,14 +141,14 @@
         <span class="badge">Stable · Desktop tool</span>
       </div>
       <h1>PC Locker</h1>
-      <div class="hero-version">v0.11.1 · Windows 10/11</div>
-      <p class="intro">A fullscreen overlay that instantly locks all keyboard input on every connected monitor — without closing or interrupting running applications. Designed for live shows, recording sessions, and unattended workstations.</p>
+      <div class="hero-version">v0.12.0 · Windows 10/11</div>
+      <p class="intro">A fullscreen overlay that instantly locks keyboard and mouse — without closing or interrupting running applications. Designed for live shows, recording sessions, and unattended workstations.</p>
     </div>
     <aside class="panel" id="download" aria-label="Downloads">
-      <div class="panel-head"><b>Download</b><span>v0.11.1</span></div>
-      <a class="btn-primary" href="https://github.com/Stage-Tools/pc-locker/releases/download/v0.11.1/PCLocker_v0.11.1_Setup.exe">Download setup</a>
-      <a class="btn-ghost" href="https://github.com/Stage-Tools/pc-locker/releases/download/v0.11.1/PCLocker_v0.11.1_Portable.exe">Download portable</a>
-      <a class="btn-ghost" href="https://github.com/Stage-Tools/pc-locker/releases/download/v0.11.1/PCLocker_v0.11.1_Manual.pdf">Manual</a>
+      <div class="panel-head"><b>Download</b><span>v0.12.0</span></div>
+      <a class="btn-primary" href="https://github.com/Stage-Tools/pc-locker/releases/download/v0.12.0/PCLocker_v0.12.0_Setup.exe">Download setup</a>
+      <a class="btn-ghost" href="https://github.com/Stage-Tools/pc-locker/releases/download/v0.12.0/PCLocker_v0.12.0_Portable.exe">Download portable</a>
+      <a class="btn-ghost" href="https://github.com/Stage-Tools/pc-locker/releases/download/v0.12.0/PCLocker_v0.12.0_Manual.pdf">Manual</a>
       <p class="note">Not code-signed: Windows SmartScreen may ask to confirm on first launch — choose More info, then Run anyway.</p>
     </aside>
   </header>
@@ -160,34 +159,28 @@
       <h2 class="title">How it works</h2>
       <div class="features">
       <div class="feature">
-        <span class="q">Q1</span>
         <h3>Fullscreen overlay</h3>
         <p>A semi-transparent overlay covers all connected monitors simultaneously. Underlying applications remain visible and keep running normally.</p>
       </div>
       <div class="feature">
-        <span class="q">Q2</span>
         <h3>Keyboard lock</h3>
-        <p>All keystrokes are blocked at the lowest Windows level — including Win key, Ctrl+Alt+Del, Ctrl+Shift+Esc, and Alt+Tab. The mouse remains free.</p>
+        <p>All keystrokes are blocked at the lowest Windows level — including Win key, Ctrl+Shift+Esc, and Alt+Tab. The mouse remains free.</p>
       </div>
       <div class="feature">
-        <span class="q">Q3</span>
         <h3>Multi-monitor</h3>
         <p>The overlay and unlock button appear on every connected display at the same time. No monitor is left unprotected.</p>
       </div>
       <div class="feature">
-        <span class="q">Q4</span>
         <h3>Unlock methods</h3>
         <p>Unlock instantly with a configurable keyboard shortcut (default Ctrl+Alt+L), or via password dialog on any screen.</p>
       </div>
       <div class="feature">
-        <span class="q">Q5</span>
-        <h3>Configurable opacity</h3>
-        <p>Adjust overlay darkness from barely visible (0.2) to nearly opaque (0.85). Default is 0.55 — desktop stays visible behind the lock.</p>
+        <h3>One screen or all screens</h3>
+        <p>Choose whether the overlay covers every monitor or only one. The other displays stay live outputs — clicks there are blocked and the cursor stays on the locked screen.</p>
       </div>
       <div class="feature">
-        <span class="q">Q6</span>
-        <h3>Setup or portable</h3>
-        <p>Available as a standard installer or as a single portable .exe. No dependencies either way. Config is saved automatically on first launch.</p>
+        <h3>Kiosk mode</h3>
+        <p>While locked the screen looks untouched — no padlock, text or button. A video keeps playing and nobody can operate the PC. Unlock with the shortcut, optionally followed by the password.</p>
       </div>
       </div>
     </div>
@@ -232,8 +225,8 @@
   </div>
 </footer>
 <div class="sticky-dl" id="sticky" aria-hidden="true">
-  <div><b>PC Locker</b><span>v0.11.1 · Windows</span></div>
-  <a class="btn btn-solid" href="https://github.com/Stage-Tools/pc-locker/releases/download/v0.11.1/PCLocker_v0.11.1_Setup.exe" tabindex="-1">Setup ↓</a>
+  <div><b>PC Locker</b><span>v0.12.0 · Windows</span></div>
+  <a class="btn btn-solid" href="https://github.com/Stage-Tools/pc-locker/releases/download/v0.12.0/PCLocker_v0.12.0_Setup.exe" tabindex="-1">Setup ↓</a>
 </div>
 <script>
 (function () {

@@ -86,7 +86,7 @@
   section.block { border-top: 1px solid var(--line); }
   section.block > .wrap { padding-top: 5rem; padding-bottom: 4rem; }
   .features { margin-top: 2.5rem; border-bottom: 1px solid var(--line); }
-  .feature { border-top: 1px solid var(--line); padding: 26px 0; display: grid; grid-template-columns: 64px minmax(0, 280px) minmax(0, 1fr); gap: 16px; align-items: baseline; }
+  .feature { border-top: 1px solid var(--line); padding: 26px 0; display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 24px; align-items: baseline; }
   .feature .q { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--amber); }
   .feature h3 { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; }
   .feature p { font-size: 15px; font-weight: 300; color: var(--text-2); line-height: 1.7; }
@@ -121,8 +121,7 @@
   .sticky-dl { display: none; }
   @media (max-width: 900px) {
     header.hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 2.5rem; padding-bottom: 2.5rem; }
-    .feature { grid-template-columns: 44px minmax(0, 1fr); gap: 6px 10px; padding: 18px 0; }
-    .feature p { grid-column: 2; }
+    .feature { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 18px 0; }
   }
   @media (max-width: 700px) {
     .hero-icon svg { width: 52px; height: 52px; }
@@ -185,37 +184,30 @@
       <h2 class="title">How it works</h2>
       <div class="features">
       <div class="feature">
-        <span class="q">Q1</span>
         <h3>Three timer modes</h3>
         <p>Countdown, count up, or count to a time of day. Play, pause and reset, and add or remove time while it runs — from a quick +1m to any amount.</p>
       </div>
       <div class="feature">
-        <span class="q">Q2</span>
         <h3>Colours and thresholds</h3>
         <p>A base colour plus two thresholds, each with optional flashing, and a dedicated end / overtime style. At zero the timer can stop or keep counting into overtime.</p>
       </div>
       <div class="feature">
-        <span class="q">Q3</span>
         <h3>Flexible output</h3>
         <p>Timer, clock, blackout or test patterns. Free layout with snap, solid or transparent background, windowed or fullscreen on the monitor you choose, plus free-text messages.</p>
       </div>
       <div class="feature">
-        <span class="q">Q4</span>
         <h3>NDI and web output</h3>
         <p>The same picture as an NDI source (with optional alpha) and as a web page, ready to use as a browser source. NDI needs the free NDI Tools on the PC.</p>
       </div>
       <div class="feature">
-        <span class="q">Q5</span>
         <h3>Presets and rundown</h3>
         <p>Twelve preset buttons, a rundown with planned start times and cumulative delay, and showfile export / import for a complete backup of the show.</p>
       </div>
       <div class="feature">
-        <span class="q">Q6</span>
         <h3>Remote control and Companion</h3>
         <p>Full web control page, HTTP / WebSocket API and a dedicated Bitfocus Companion module with actions, feedbacks, variables and ready-made buttons.</p>
       </div>
       <div class="feature">
-        <span class="q">Q7</span>
         <h3>Built for the show</h3>
         <p>Time is computed from the system's monotonic clock. Web server, NDI and output are isolated from the timer: a failure in one of them never stops the count.</p>
       </div>
@@ -227,7 +219,7 @@
     <div class="wrap">
       <div class="more-head"><h2>More from the toolkit</h2><a href="index.html">All tools →</a></div>
       <div class="more">
-      <a href="pc-locker.html"><b>PC Locker</b><span>v0.11.1 · Windows</span></a>
+      <a href="pc-locker.html"><b>PC Locker</b><span>v0.12.0 · Windows</span></a>
       <a href="smpteye.html"><b>SMPTEye</b><span>v0.19.0 · Windows</span></a>
       <a href="wocountdown.html"><b>WO Countdown</b><span>v0.2.0 · Windows</span></a>
       <a href="rackdesigner.html"><b>Rack Designer</b><span>v0.1.20 · Windows</span></a>

@@ -86,7 +86,7 @@
   section.block { border-top: 1px solid var(--line); }
   section.block > .wrap { padding-top: 5rem; padding-bottom: 4rem; }
   .features { margin-top: 2.5rem; border-bottom: 1px solid var(--line); }
-  .feature { border-top: 1px solid var(--line); padding: 26px 0; display: grid; grid-template-columns: 64px minmax(0, 280px) minmax(0, 1fr); gap: 16px; align-items: baseline; }
+  .feature { border-top: 1px solid var(--line); padding: 26px 0; display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 24px; align-items: baseline; }
   .feature .q { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--amber); }
   .feature h3 { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; }
   .feature p { font-size: 15px; font-weight: 300; color: var(--text-2); line-height: 1.7; }
@@ -106,8 +106,7 @@
   .sticky-dl { display: none; }
   @media (max-width: 900px) {
     header.hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 2.5rem; padding-bottom: 2.5rem; }
-    .feature { grid-template-columns: 44px minmax(0, 1fr); gap: 6px 10px; padding: 18px 0; }
-    .feature p { grid-column: 2; }
+    .feature { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 18px 0; }
   }
   @media (max-width: 700px) {
     .hero-icon svg { width: 52px; height: 52px; }
@@ -160,32 +159,26 @@
       <h2 class="title">How it works</h2>
       <div class="features">
       <div class="feature">
-        <span class="q">Q1</span>
         <h3>LTC support</h3>
         <p>Reads Linear Timecode via any audio interface with a line input. Signal level is monitored in real time with a visual indicator.</p>
       </div>
       <div class="feature">
-        <span class="q">Q2</span>
         <h3>MTC support</h3>
         <p>Reads MIDI Timecode from any hardware or virtual MIDI port. Compatible with loopMIDI for software-based timecode sources.</p>
       </div>
       <div class="feature">
-        <span class="q">Q3</span>
         <h3>Multi-source</h3>
         <p>Monitor multiple LTC and MTC sources simultaneously. Each source appears as a card with its own timecode display and status.</p>
       </div>
       <div class="feature">
-        <span class="q">Q4</span>
         <h3>Browser-based UI</h3>
         <p>The interface runs in any browser on any device on the local network — laptop, tablet, phone. No app to install on remote devices.</p>
       </div>
       <div class="feature">
-        <span class="q">Q5</span>
         <h3>Auto frame rate detection</h3>
         <p>Frame rate is detected automatically from the incoming signal. Supports 24, 25, 29.97 DF/NDF, and 30 fps.</p>
       </div>
       <div class="feature">
-        <span class="q">Q6</span>
         <h3>Start with Windows</h3>
         <p>Optional autostart on boot. The server is ready before you open a browser — useful for always-on monitoring setups.</p>
       </div>
@@ -197,7 +190,7 @@
     <div class="wrap">
       <div class="more-head"><h2>More from the toolkit</h2><a href="index.html">All tools →</a></div>
       <div class="more">
-      <a href="pc-locker.html"><b>PC Locker</b><span>v0.11.1 · Windows</span></a>
+      <a href="pc-locker.html"><b>PC Locker</b><span>v0.12.0 · Windows</span></a>
       <a href="stagetimer.html"><b>Stage Timer</b><span>v0.9.4 · Windows · macOS</span></a>
       <a href="wocountdown.html"><b>WO Countdown</b><span>v0.2.0 · Windows</span></a>
       <a href="rackdesigner.html"><b>Rack Designer</b><span>v0.1.20 · Windows</span></a>

@@ -86,7 +86,7 @@
   section.block { border-top: 1px solid var(--line); }
   section.block > .wrap { padding-top: 5rem; padding-bottom: 4rem; }
   .features { margin-top: 2.5rem; border-bottom: 1px solid var(--line); }
-  .feature { border-top: 1px solid var(--line); padding: 26px 0; display: grid; grid-template-columns: 64px minmax(0, 280px) minmax(0, 1fr); gap: 16px; align-items: baseline; }
+  .feature { border-top: 1px solid var(--line); padding: 26px 0; display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 24px; align-items: baseline; }
   .feature .q { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--amber); }
   .feature h3 { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; }
   .feature p { font-size: 15px; font-weight: 300; color: var(--text-2); line-height: 1.7; }
@@ -106,8 +106,7 @@
   .sticky-dl { display: none; }
   @media (max-width: 900px) {
     header.hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 2.5rem; padding-bottom: 2.5rem; }
-    .feature { grid-template-columns: 44px minmax(0, 1fr); gap: 6px 10px; padding: 18px 0; }
-    .feature p { grid-column: 2; }
+    .feature { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 18px 0; }
   }
   @media (max-width: 700px) {
     .hero-icon svg { width: 52px; height: 52px; }
@@ -160,37 +159,30 @@
       <h2 class="title">How it works</h2>
       <div class="features">
       <div class="feature">
-        <span class="q">Q1</span>
         <h3>Container cue</h3>
         <p>Drop a transparent container image on any timeline and stretch the cue to the length you need. The countdown reaches 00:00 exactly at the end of the cue.</p>
       </div>
       <div class="feature">
-        <span class="q">Q2</span>
         <h3>Follows the playhead</h3>
         <p>Connects to the WATCHOUT Production PC and reads every timeline's position live. Jumps, pauses and stops are followed instantly; several timelines are listed side by side.</p>
       </div>
       <div class="feature">
-        <span class="q">Q3</span>
         <h3>Reads the show file</h3>
         <p>Cue start and duration are read from the saved .watch file. Save the show in WATCHOUT and WO Countdown reloads it within two seconds.</p>
       </div>
       <div class="feature">
-        <span class="q">Q4</span>
         <h3>Window and HDMI output</h3>
         <p>A clean output with only the countdown, windowed or fullscreen on the monitor you choose, with custom colours and optional timeline name.</p>
       </div>
       <div class="feature">
-        <span class="q">Q5</span>
         <h3>NDI and web page</h3>
         <p>Send the countdown as an NDI source, optionally with transparent background, or open it as a web page from any browser on the network — ready for vMix or OBS.</p>
       </div>
       <div class="feature">
-        <span class="q">Q6</span>
         <h3>Companion variables</h3>
         <p>Pushes the countdown to Bitfocus Companion custom variables: full time, hours, minutes, seconds, active flag and timeline name.</p>
       </div>
       <div class="feature">
-        <span class="q">Q7</span>
         <h3>Read-only by design</h3>
         <p>WO Countdown never controls WATCHOUT: it only reads. Nothing in the show can be started or stopped from it.</p>
       </div>
@@ -202,7 +194,7 @@
     <div class="wrap">
       <div class="more-head"><h2>More from the toolkit</h2><a href="index.html">All tools →</a></div>
       <div class="more">
-      <a href="pc-locker.html"><b>PC Locker</b><span>v0.11.1 · Windows</span></a>
+      <a href="pc-locker.html"><b>PC Locker</b><span>v0.12.0 · Windows</span></a>
       <a href="smpteye.html"><b>SMPTEye</b><span>v0.19.0 · Windows</span></a>
       <a href="stagetimer.html"><b>Stage Timer</b><span>v0.9.4 · Windows · macOS</span></a>
       <a href="rackdesigner.html"><b>Rack Designer</b><span>v0.1.20 · Windows</span></a>

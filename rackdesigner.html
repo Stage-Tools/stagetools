@@ -86,7 +86,7 @@
   section.block { border-top: 1px solid var(--line); }
   section.block > .wrap { padding-top: 5rem; padding-bottom: 4rem; }
   .features { margin-top: 2.5rem; border-bottom: 1px solid var(--line); }
-  .feature { border-top: 1px solid var(--line); padding: 26px 0; display: grid; grid-template-columns: 64px minmax(0, 280px) minmax(0, 1fr); gap: 16px; align-items: baseline; }
+  .feature { border-top: 1px solid var(--line); padding: 26px 0; display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 24px; align-items: baseline; }
   .feature .q { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--amber); }
   .feature h3 { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; }
   .feature p { font-size: 15px; font-weight: 300; color: var(--text-2); line-height: 1.7; }
@@ -106,8 +106,7 @@
   .sticky-dl { display: none; }
   @media (max-width: 900px) {
     header.hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 2.5rem; padding-bottom: 2.5rem; }
-    .feature { grid-template-columns: 44px minmax(0, 1fr); gap: 6px 10px; padding: 18px 0; }
-    .feature p { grid-column: 2; }
+    .feature { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 18px 0; }
   }
   @media (max-width: 700px) {
     .hero-icon svg { width: 52px; height: 52px; }
@@ -169,32 +168,26 @@
       <h2 class="title">How it works</h2>
       <div class="features">
       <div class="feature">
-        <span class="q">Q1</span>
         <h3>Visual rack layout</h3>
         <p>Design multi-rack layouts by dragging equipment from a library into rack slots. Supports reordering by drag, tray placement for sub-width devices, and multi-bay racks.</p>
       </div>
       <div class="feature">
-        <span class="q">Q2</span>
         <h3>Device library</h3>
         <p>Manage a persistent, project-independent library of equipment definitions. Includes 100+ preloaded professional devices across video, audio, lighting, network, and power categories.</p>
       </div>
       <div class="feature">
-        <span class="q">Q3</span>
         <h3>Power &amp; weight totals</h3>
         <p>Automatically calculates total power draw in watts and weight in kg per rack and across the entire project. Totals update in real time as devices are added or removed.</p>
       </div>
       <div class="feature">
-        <span class="q">Q4</span>
         <h3>PDF export</h3>
         <p>Generate rider-ready PDF documentation with rack diagrams, device lists, power and weight totals, and a project summary. Fully configurable per export.</p>
       </div>
       <div class="feature">
-        <span class="q">Q5</span>
         <h3>Import &amp; export</h3>
         <p>Import and export devices in JSON or CSV format. Share library entries with other users or maintain a master library outside the application.</p>
       </div>
       <div class="feature">
-        <span class="q">Q6</span>
         <h3>Project files</h3>
         <p>Projects are saved as self-contained .rackproj files. Share them with collaborators without requiring the same device library to be installed on their machine.</p>
       </div>
@@ -206,7 +199,7 @@
     <div class="wrap">
       <div class="more-head"><h2>More from the toolkit</h2><a href="index.html">All tools →</a></div>
       <div class="more">
-      <a href="pc-locker.html"><b>PC Locker</b><span>v0.11.1 · Windows</span></a>
+      <a href="pc-locker.html"><b>PC Locker</b><span>v0.12.0 · Windows</span></a>
       <a href="smpteye.html"><b>SMPTEye</b><span>v0.19.0 · Windows</span></a>
       <a href="stagetimer.html"><b>Stage Timer</b><span>v0.9.4 · Windows · macOS</span></a>
       <a href="wocountdown.html"><b>WO Countdown</b><span>v0.2.0 · Windows</span></a>
